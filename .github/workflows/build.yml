@@ -24,10 +24,14 @@ jobs:
           sudo apt update
           sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev cmake libffi-dev libssl-dev
           
+      - name: Accept Android licenses
+        run: |
+          mkdir -p /home/runner/.android
+          echo "y" | sudo sdkmanager --licenses || true
+          
       - name: Build with Buildozer
         run: |
-          # NO ejecutar buildozer init (ya tienes el archivo)
-          buildozer android debug
+          yes | buildozer android debug
         
       - name: Upload APK
         uses: actions/upload-artifact@v4
