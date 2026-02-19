@@ -9,6 +9,7 @@ orientation = portrait
 osx.python_version = 3
 osx.kivy_version = 2.1.0
 fullscreen = 0
+android.accept_sdk_license = True
 
 [buildozer]
 log_level = 2
